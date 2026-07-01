@@ -39,7 +39,15 @@ void setup()
   display.print(".. Iniciando ..");
   dht.begin();
 
+  display.clear();
+  display.print(".. Conectando ..");
+
   connect_to_wifi(ssid, password);
+
+  display.clear();
+  display.print(".. Conectado ..");
+
+  delay(2000);
   analogReadResolution(10);
 
   mq2.begin(mq2_pin);
@@ -58,7 +66,7 @@ void loop()
     const int air_quality = mq2.read_analog();
     const int air_humidity = (int)(round(dht.readHumidity()));
     const int air_temperature = (int)(round(dht.readTemperature()));
-    const int soil_humidity = (int)(round(soil_sensor.read_analog()));
+    const int soil_humidity = (int)(round( ((1024.0 - (float)(soil_sensor.read_analog())) /1024.0) * 100.0));
 
     data["system"]["firmware"] = "Esp32 - kuvila check";
     data["system"]["version"] = "1.0.0";
@@ -66,7 +74,7 @@ void loop()
     data["data"]["air_quality"] = air_quality;
     data["data"]["air_humidity"] = air_humidity;
     data["data"]["air_temperature"] = air_temperature;
-    data["data"]["soil_humidity"] = (int)(round(((1024.0 - (float)(soil_humidity)) / 1024.0) * 100));
+    data["data"]["soil_humidity"] = soil_humidity;
 
     data["controlls"]["water_pump"] = water_pump_status;
 
@@ -83,15 +91,19 @@ void loop()
     water_pump.write(water_pump_status);
 
     display.clear();
-    display.print("H: ");
-    display.print(air_humidity);
-    display.print(" |T: ");
-    display.print(air_temperature);
+    display.print("H: "); display.print(air_humidity); display.print("%");
+    display.print(" | T: ");
+    display.print(air_temperature); display.print("C");
 
+    display.setCursor(0, 1);
+     display.print("Hs: "); display.print(soil_humidity); display.print("%");
     delay(10);
   }
   else
   {
+    display.clear();
+    display.setCursor(0, 0);
+    display.print("..Reiniciando..");
     printf("\n| > Não conectado ao wifi. Reconectando...\n");
     WiFi.reconnect();
   }

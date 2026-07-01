@@ -26,7 +26,7 @@ async function consultarEstadoBomba() {
     } catch (error) {
         console.error('Erro ao consultar sistema:', error);
     } finally {
-        setTimeout(consultarEstadoBomba, 11);
+        setTimeout(consultarEstadoBomba, 2000);
     }
 }
 
