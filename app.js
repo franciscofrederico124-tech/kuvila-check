@@ -15,8 +15,9 @@ dotenv.config();
 const app = express();
 const __dirname = import.meta.dirname;
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 2000;
 
+app.set("trust proxy", 1); 
 app.use(express.json());
 
 app.use(cors({
@@ -29,7 +30,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        secure: false,
+        secure: true,
         maxAge: 1000 * 60 * 60,
     }
 }));
