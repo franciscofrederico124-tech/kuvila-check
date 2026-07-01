@@ -92,7 +92,7 @@ void loop()
   }
   else
   {
-    printf("\n| > Não conectado ao wofi. Reconectando...\n");
+    printf("\n| > Não conectado ao wifi. Reconectando...\n");
     WiFi.reconnect();
   }
 }

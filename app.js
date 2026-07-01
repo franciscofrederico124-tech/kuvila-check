@@ -17,7 +17,7 @@ const __dirname = import.meta.dirname;
 
 const port = process.env.PORT || 2000;
 
-app.set("trust proxy", 1); 
+app.set("trust proxy", 1);
 app.use(express.json());
 
 app.use(cors({
@@ -79,25 +79,23 @@ app.post("/system/data", system);
 
 app.get("/system/consult", system_consult);
 
+app.get("/api/ping", (req, res) => {
+    return res.status(200).json({
+        success: true,
+        message: "Pong!",
+    });
+});
+
+
+app.get((req, res) => {
+    res.status(200).redirect("/inicio");
+});
+
 app.listen(port, () => {
     console.log(`
 =================================
 | > Sistema inicializado         
 | > http://127.0.0.1:${port}/   
-=================================
-
-| Rotas                         |
-| > /inicio (get)               |
-|   > /inicio/login (get)       |
-|   > /inicio/perfil (get)       |
-|   > /inicio/como-funciona     |
-|   > /inicio/ajuda              |
-| ############################# |
-| > /api/login (post)           |
-| > /api/ping (get)             |
-| > /api/logout (post)          |
-|   > /api/system/data (get)    |
-|   > /api/system/me ( get )    |
 =================================
     `);
 });
