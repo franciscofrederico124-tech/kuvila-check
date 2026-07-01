@@ -1,0 +1,141 @@
+.home {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 24px;
+}
+
+.home-header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: rgb(0, 26, 0);
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.home-header p {
+    font-size: 1rem;
+    color: #667085;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.02), 0 8px 16px -6px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 35px -8px rgba(0, 26, 0, 0.07);
+    border-color: rgba(0, 128, 0, 0.15);
+}
+
+.card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: rgba(0, 128, 0, 0.06);
+    color: rgb(0, 128, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    flex-shrink: 0;
+}
+
+.card-icon.blue {
+    background: rgba(13, 110, 253, 0.07);
+    color: rgb(13, 110, 253);
+}
+
+.card-icon.green {
+    background: rgba(25, 135, 84, 0.07);
+    color: rgb(25, 135, 84);
+}
+
+.card-icon.orange {
+    background: rgba(253, 126, 20, 0.07);
+    color: rgb(253, 126, 20);
+}
+
+.card-icon.brown {
+    background: rgba(139, 69, 19, 0.07);
+    color: rgb(139, 69, 19);
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.card-info h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #8896a6;
+    font-weight: 700;
+}
+
+.card-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: rgb(0, 26, 0);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.raw-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #98a2b3;
+}
+
+.status-excellent {
+    color: #15803d;
+    font-weight: 800;
+}
+
+.status-good {
+    color: #16a34a;
+    font-weight: 700;
+}
+
+.status-regular {
+    color: #d97706;
+    font-weight: 700;
+}
+
+.status-bad {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+.status-critical {
+    color: #7f1d1d;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.status-unknown {
+    color: #667085;
+}

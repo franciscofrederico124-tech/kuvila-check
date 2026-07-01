@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/controller.css">
+    <link rel="stylesheet" href="/css/como.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <title> Kuvila check </title>
+</head>
+
+<body>
+
+    <aside>
+        <div class="logo">
+            <img src="/img/logo.png" alt="Kuvila Logo">
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/inicio" class="{{#if isInicio}}active{{/if}}">
+                        <i class="bi bi-house"></i>
+                        Início
+                    </a>
+                </li>
+                <li>
+                    <a href="/incio/controle" class="{{#if isControle}}active{{/if}}">
+                        <i class="bi bi-sliders"></i>
+                        Controle
+                    </a>
+                </li>
+                <li>
+                    <a href="/inicio/como-funciona" class="{{#if isAjuda}}active{{/if}}">
+                        <i class="bi bi-question-circle"></i>
+                        Como funciona
+                    </a>
+                </li>
+                <li>
+                    <a href="/inicio/perfil" class="{{#if isPerfil}}active{{/if}}">
+                        <i class="bi bi-person-circle"></i>
+                        Perfil
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        {{{body}}}
+    </main>
+
+    <script src="/js/controller.js"></script>
+    <script src="/js/home.js"></script>
+
+</body>
+
+</html>

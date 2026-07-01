@@ -1,0 +1,65 @@
+<section class="perfil">
+    <div class="perfil-header">
+        <h1>Meu Perfil</h1>
+        <p>Gerencie suas informações de conta e credenciais de acesso.</p>
+    </div>
+
+    <div class="perfil-container">
+        <div class="perfil-card">
+            
+            <div class="avatar-section">
+                <div class="avatar-circle">
+                    <i class="bi bi-person-badge"></i>
+                </div>
+                <div class="avatar-text">
+                    <h2>{{user.name}}</h2>
+                    <span class="role-badge">{{user.rule}}</span>
+                </div>
+            </div>
+
+            <div class="perfil-info-grid">
+                
+                <div class="info-field">
+                    <label>ID do Usuário</label>
+                    <div class="info-input-wrapper">
+                        <i class="bi bi-hash"></i>
+                        <input type="text" value="{{user.id}}" readonly>
+                    </div>
+                </div>
+
+                <div class="info-field">
+                    <label>Nome Completo</label>
+                    <div class="info-input-wrapper">
+                        <i class="bi bi-person"></i>
+                        <input type="text" value="{{user.name}}" readonly>
+                    </div>
+                </div>
+
+                <div class="info-field">
+                    <label>Endereço de E-mail</label>
+                    <div class="info-input-wrapper">
+                        <i class="bi bi-envelope"></i>
+                        <input type="email" value="{{user.email}}" readonly>
+                    </div>
+                </div>
+
+                <div class="info-field">
+                    <label>Nível de Acesso (Role)</label>
+                    <div class="info-input-wrapper">
+                        <i class="bi bi-shield-lock"></i>
+                        <input type="text" value="{{user.rule}}" readonly>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="perfil-actions">
+                <a href="/inicio/logout" class="btn-logout">
+                    <i class="bi bi-box-arrow-right"></i>
+                    Terminar Sessão
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>

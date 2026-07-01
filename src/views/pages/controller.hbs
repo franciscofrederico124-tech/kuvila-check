@@ -1,0 +1,33 @@
+<section class="controle">
+    <div class="controle-header">
+        <h1>Painel de Controle</h1>
+        <p>Gerenciamento e monitoramento do sistema de irrigação.</p>
+    </div>
+
+    <div class="control-container">
+        <div class="control-card">
+
+            <div class="control-item">
+                <span class="control-label">Interruptor Geral</span>
+                <label class="switch">
+                    <input type="checkbox" id="bomba-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="control-item">
+                <span class="control-label">Humidade do Solo</span>
+                <div class="control-value-group">
+                    <i class="bi bi-droplet-half icon-humidity"></i>
+                    <span class="control-value" id="soil-humidity"> .. %</span>
+                </div>
+            </div>
+
+            <div class="control-item">
+                <span class="control-label">Estado da Bomba</span>
+                <span class="status-badge status-off" id="bomba-status">Desligado</span>
+            </div>
+
+        </div>
+    </div>
+</section>

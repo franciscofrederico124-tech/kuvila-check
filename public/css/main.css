@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    height: 100dvh;
+    width: 100dvw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 20% 80%; 
+    color: rgb(0, 26, 0);
+    overflow: hidden;
+    background: linear-gradient(135deg, rgb(245, 249, 247) 0%, rgb(228, 240, 235) 100%);
+}
+
+body aside {
+    height: 100dvh;
+    background: rgb(228, 240, 235);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    align-items: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body .logo {
+    display: flex;
+    flex-direction: row;
+    padding: 16px 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+body .logo img {
+    height: 120px;
+    object-fit: contain;
+}
+
+body nav {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+    margin-top: 16px;
+}
+
+body nav ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    padding: 0 16px;
+}
+
+body nav ul li {
+    list-style: none;
+    width: 100%;
+    display: flex;
+}
+
+body nav ul li a {
+    text-decoration: none;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 16px;
+    color: rgb(0, 15, 0);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+body nav ul li a:hover {
+    background: rgba(0, 128, 0, 0.08);
+}
+
+body nav ul li a.active {
+    background: rgba(0, 128, 0, 0.75) !important;
+    color: white !important;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 128, 0, 0.2);
+}
+
+body nav ul li a.active i {
+    color: white !important;
+}
+
+.main-content {
+    height: 100dvh;
+    overflow-y: auto;
+    padding: 32px;
+    background: rgba(215, 250, 215, 0.144);
+}
+.grid-card {
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    justify-content: center;
+}
