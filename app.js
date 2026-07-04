@@ -8,8 +8,8 @@ import profile from "./src/routes/profile.js";
 
 import config_db from "./src/routes/config.js";
 import { login, logout, auth_login, auth_home } from "./src/routes/middlewares/auth.js";
-import { get_data_system, get_controlls } from "./src/routes/get_data_system.js";
-import { system, system_consult } from "./src/hooks/data_system.js";
+import { get_data_system, get_controlls,  get_controlls_from_sms } from "./src/routes/get_data_system.js";
+import { system, system_consult, system_public } from "./src/hooks/data_system.js";
 
 dotenv.config();
 const app = express();
@@ -26,11 +26,11 @@ app.use(cors({
 
 app.use(session({
     secret: "kuvila_check_secret_key",
-    resalve: false,
+    resave: false,
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        secure: true,
+        secure: false,
         maxAge: 1000 * 60 * 60,
     }
 }));
@@ -75,7 +75,9 @@ app.post("/api/login", login);
 
 app.post("/system/data_system", get_data_system);
 app.post("/system/controlls", get_controlls);
+app.post("/system/controlls/sms", get_controlls_from_sms);
 app.post("/system/data", system);
+app.post("/system/data/public", system_public);
 
 app.get("/system/consult", system_consult);
 
@@ -87,7 +89,7 @@ app.get("/api/ping", (req, res) => {
 });
 
 
-app.get("/",(req, res) => {
+app.get("/", (req, res) => {
     res.status(200).redirect("/inicio");
 });
 

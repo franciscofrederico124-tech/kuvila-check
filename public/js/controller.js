@@ -24,7 +24,9 @@ async function consultarEstadoBomba() {
                 const isOn = data.data.controlls.water_pump === 1;
 
                 if (!enviandoComando) {
-                    if (bombaToggle) bombaToggle.checked = isOn;
+                    if (bombaToggle && bombaToggle.checked !== isOn) {
+                        bombaToggle.checked = isOn;
+                    }
                     atualizarInterfaceBomba(isOn);
                 }
             }
@@ -48,7 +50,12 @@ function atualizarInterfaceBomba(isOn) {
 }
 
 if (bombaToggle && bombaStatus) {
-    bombaToggle.addEventListener('change', async function () {
+    bombaToggle.addEventListener('click', async function (event) {
+        if (enviandoComando) {
+            event.preventDefault();
+            return;
+        }
+
         enviandoComando = true;
         clearTimeout(consultaTimeoutId);
 
@@ -75,8 +82,10 @@ if (bombaToggle && bombaStatus) {
             atualizarInterfaceBomba(estadoAnterior);
             console.error('Erro ao enviar a solicitação:', error);
         } finally {
-            enviandoComando = false;
-            agendarProximaConsulta(3000);
+            setTimeout(() => {
+                enviandoComando = false;
+                agendarProximaConsulta(2000);
+            }, 1000);
         }
     });
 }

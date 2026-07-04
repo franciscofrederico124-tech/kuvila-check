@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+
 let data_system = {
     "system": { firmware: 'Esp32 - kuvila check', version: '1.0.0' },
     "data": {
@@ -7,6 +9,32 @@ let data_system = {
         "soil_humidity": "...",
     },
     "controlls": { "water_pump": 0 }
+}
+
+
+dotenv.config();
+
+const access_ = process.env.ACCESS_;
+
+async function system_public(req, res) {
+    try {
+        const data = req.body;
+
+        if (data.access_ !== access_) {
+            return res.status(403).json({
+                success: false,
+                message: "Não permitido!",
+            });
+        }
+
+        return res.status(200).json(data_system);
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Erro no servidor"
+        });
+    }
 }
 
 async function system(req, res) {
@@ -63,4 +91,4 @@ async function system_consult(req, res) {
 }
 
 
-export { data_system, system, system_consult };
+export { data_system, system, system_consult, system_public };
