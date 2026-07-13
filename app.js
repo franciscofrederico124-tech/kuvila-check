@@ -8,7 +8,7 @@ import profile from "./src/routes/profile.js";
 
 import config_db from "./src/routes/config.js";
 import { login, logout, auth_login, auth_home } from "./src/routes/middlewares/auth.js";
-import { get_data_system, get_controlls,  get_controlls_from_sms } from "./src/routes/get_data_system.js";
+import { get_data_system, get_controlls, get_controlls_from_sms } from "./src/routes/get_data_system.js";
 import { system, system_consult, system_public } from "./src/hooks/data_system.js";
 
 dotenv.config();
@@ -72,6 +72,20 @@ app.get("/inicio/como-funciona", auth_home, (req, res) => {
 app.get("/inicio/perfil", auth_home, profile);
 
 app.post("/api/login", login);
+
+app.get("/system/logout", (req, res) => {
+
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("Erro ao destruir sessão:", err);
+            return res.status(500).send("Erro ao sair"); 
+        }
+
+        res.clearCookie('connect.sid');
+        return res.redirect("/inicio/login");
+    });
+});
+
 
 app.post("/system/data_system", get_data_system);
 app.post("/system/controlls", get_controlls);
