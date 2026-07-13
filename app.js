@@ -73,19 +73,6 @@ app.get("/inicio/perfil", auth_home, profile);
 
 app.post("/api/login", login);
 
-app.get("/system/logout", (req, res) => {
-
-    req.session.destroy((err) => {
-        if (err) {
-            console.error("Erro ao destruir sessão:", err);
-            return res.status(500).send("Erro ao sair"); 
-        }
-
-        res.clearCookie('connect.sid');
-        return res.redirect("/inicio/login");
-    });
-});
-
 
 app.post("/system/data_system", get_data_system);
 app.post("/system/controlls", get_controlls);
