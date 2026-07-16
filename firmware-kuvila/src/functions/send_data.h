@@ -4,7 +4,7 @@
 #include <ArduinoJson.h>
 #include <Arduino.h>
 
-String apiBase = "https://kuvila.onrender.com";
+String apiBase = "https://kuvila-check-app.onrender.com";
 
 String send_data(String data)
 {
